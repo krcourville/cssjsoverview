@@ -1,0 +1,11 @@
+{
+  "name": "cssjsoverview",
+  "description": "A package using naive versioning",
+  "author": "Ken Courville",
+  "dependencies": {
+    "connect": ">= 2.13.x"
+  },  
+  "engines": {
+  	"node" : ">=0.10"
+  }
+}
