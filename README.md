@@ -69,8 +69,7 @@ Another important tag is `<a>`, which creates links on web pages to other web pa
 					- Joe Schmoe
 2. Use an HTML tag to bold the word *all* in the first paragraph.  Refer to [http://www.w3schools.com/tags/tag_b.asp](http://www.w3schools.com/tags/tag_b.asp).
 
-Adding Some Style
------------------
+##Adding Some Style
 Just like styles in MS Word, CSS, Cascading Style Sheets, is used to separate document structure from style.  A well-planned CSS file can be re-used across any number of pages in a site or across many web sites on different servers.  You can establish your company's entire brand in a single file (or use several files for maintainability and then join them for the final product). 
 
 ###Scenario
@@ -130,14 +129,12 @@ There is much more to CSS. And, as a word of caution, some styles are not implem
 [http://www.w3schools.com/css/](http://www.w3schools.com/css/)
 
 ### Exercises
-1. Add a style to bold all links.
+1. Add a style that makes all links bold.
 2. Add a 3 pixel dashed border to the body. Refer to [http://www.w3schools.com/cssref/pr_border.asp](CSS Border Property)
 
 
-Making it Interactive
----------------------
+##Making it Interactive
 TODO
 
-Conclusion
-----------
+##Conclusion
 TODO
