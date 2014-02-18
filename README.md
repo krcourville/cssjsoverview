@@ -1,26 +1,13 @@
-CSS & JS Overview
-===========================
+# CSS & JS Overview
 
-Introduction
-------------
-CSS is an acronym for "Cascading Style Sheets" and is used to separate content from styling.  Consistent styling of documents can improve readability and allow for style reuse (AKA *less work*). JavaScript enables web pages,
-which are normally static, to exhibit dynamic behavior.  In the following text, you will receive a very brief introduction and demo of CSS and JavaScript and how this technologies might be useful. 
+## Introduction
+In the following text, you will learn by doing and receive a very brief introduction and demo of CSS and JavaScript and how these technologies might be useful in any web page. For comparison, we will look at styles and document structure in MS Word and then dig a little bit into HTML, CSS, and JavaScript.
 
-Getting Started
----------------
-This tutorial is intended for Windows users.  Though, all source code is viewable with any text editor, more understanding is likely to be gained by downloading the code and using a web server.  Use these steps to get a web server going:
+## Getting Started
+All source code demonstrated here can be created and be viewed with any text editor, however, most browsers require that a web page be served by a web server for JavaScript to run.  As a result, all code is hosted on jsbin.com where you can play with HTML, JavaScript, and CSS without need for any software other than a web browser.
 
-1. **Either Install Git and clone the source, or download the zip file and extract it locally.**  There are many ways to accomplish this step, nevertheless, the source is found here: [https://github.com/krcourville/cssjsoverview](https://github.com/krcourville/cssjsoverview).  You'll find links for *Clone in Desktop* and *Download Zip* on the right sidebar.
-2. **Get a web server running.** Again, this can be accomplished in several ways, but here's one way:
-	1. Install node.js from [http://nodejs.org/](http://nodejs.org/)
-	2. Open a command prompt and change to the directory in which this document exists.
-	3. Enter `npm install` This installs connect and its dependencies
-	4. Enter `node server` This start the server
-	5. Verify that you can browse to [http://localhost:4000/friender.html](http://localhost:4000/friender.html)
-
-Styling, a Quick Demo for MS Office Users
------------------------------------------
-To help illustrate the usefulness of styles, before we try to understand an HTML document, let's try a simple example with a MS Word document.  Follow these steps for a demo  (Note: These steps were tested against Word 2010):
+## Styling in MS Word
+To help illustrate the usefulness of styles and document structure, let's try a simple example with a MS Word document.  Follow these steps to examine how styles work in a Word document (Note: These steps were tested against Word 2010):
 
 1. Open [CheckOutMyStyle.docx](CheckOutMyStyle.docx)
 2. This document uses 4 styles. See if you can identify them:
@@ -39,44 +26,113 @@ With the previous exercise in mind, consider the following scenario:
 
 You just spent a month preparing a 150 page estimate for your manager.  Everything looks great, except that the  client now requires all documents to use APA format.  When typing the document, you simply bolded every header.  How are you going to fix this easily?  If you had grouped the elements of your document into logical components, such as title, paragraphs, and headings, you would not be breaking a sweat right now.
 
+By identifying and classifying the common components of your document, you can apply consistent, maintainable formatting across many documents or a single documents.
+
+### Exercises
+ 1. Modify the Header 2 style to be italicized, underlined, and indented.
+ 2. Create a dynamic Table of Contents page using the Headers.
+
 	
 HTML
 ----
-When talking about web pages, to understand the usefulness of CSS or JavaScript, you must first understand HTML.  HTML, Hyper Text Markup Language, is used in practically every web page you visit.  No matter what web server (Apache, IIS, Tomcat) or technology (ASP.NET, Ruby on Rails, JSP) you use, the final output to your web browser will generally be HTML.
+Discussing CSS and JavaScript without a minimal understanding of HTML is near impossible.  HTML, Hyper Text Markup Language, is used in practically every web page you visit.  No matter what web server (Apache, IIS, Tomcat) or technology (ASP.NET, Ruby on Rails, JSP) you use, the final output to your web browser will generally be HTML.
 
-To see HTML in action, open [friender.html](friender.html), right-click in you web browser window and select **View Source**
+To see HTML in action, open the Friender Base page here: [http://jsbin.com/zavut/1/edit](http://jsbin.com/zavut/1/edit).  You should see the HTML on left and resulting page on the right.
 
-HTML documents primarily consist of various *nodes*.  Tags (AKA elements), Attributes, and Text are the most common. Here's some examples:
+HTML documents are composed of a tree containing various *nodes*.  This tree of nodes forms a DOM (Document Object Model) that can be references by CSS and JavaScript.  Tags, Attributes, and Text are the most common nodes. Here's some examples:
 
- * Tags are text enclosed in angle brackets: `<html></html>`, `<body></body>`, and `<p>`.  
+ * Tags consist of text enclosed in angle brackets: `<html></html>`, `<body></body>`, and `<p>`.  Notice that some tags have an open and close tags.  The close tag is the same as the opening tag except with a slash.
  * Attributes are surrounded with matching single or double quotes within the opening tag like this: `<p class="this_is_an_attribute">`.
- * Text nodes can be found between the opening and closing tags like so:  `<p>This is a text node between p tags!</p>`
+ * Text nodes can be found between the opening and closing tags like so:  `<p>This is a text node within a p tags!</p>`
 
-Similar to Word, HTML allows you to classify components of your document.  You can use `<h1> <h2> ...` for different header levels, `<p>` for paragraphs, `<ol>` for an ordered list, and `<li>` for list items.
+Similar to Word, HTML allows you to classify components of your document.  You can use `<h1> <h2> ...` for different header levels, `<p>` for paragraphs, `<ol>` for an ordered list, and `<li>` for list items.  The *class* attribute is a special attribute used to further classify elements.  In the [http://jsbin.com/zavut/1/edit](Friender) page, notice how class is used to identify links that will delete something.
 
-An HTML document forms a tree data structure. Compare the friender.html source to this outline and see if you can identify the type of node each line is:
+Another important tag is `<a>`, which creates links on web pages to other web pages and resources.  The *a* stands for *anchor*.  Consider this link: `<a href="http://www.google.com">Google It!</a>`.  The *href* attribute specifies the web address of the link, and the text between the open and close tag form what is the displayed in a web browser.
 
-* html
-	- body
-		- h1
-			- Friender
-		- p
-			- This application will help keep track of all of your friends.
-		- ol
-			- li
-				- a
-					- href
-					- class
-					- Unfriend
-				- Joe Schmoe
+### Further Learning
+[http://www.w3schools.com/html/](http://www.w3schools.com/html/)
 
- HTML documents are commonly referenced via DOM, Document Object Model.  Keep this in mind as you delve deeper into the JavaScript and CSS topics below.
-
- For more information and instruction on HTML, refer to [http://www.w3schools.com/html/](http://www.w3schools.com/html/). W3 Schools provides free/interactive tutorials.
+###Exercises
+1. Compare the friender.html source to this outline and identify the type of node each line is:
+	* html
+		- body
+			- h1
+				- Friender
+			- p
+				- This application will help keep track of all of your friends.
+			- ol
+				- li
+					- a
+						- href
+						- class
+						- Unfriend
+					- Joe Schmoe
+2. Use an HTML tag to bold the word *all* in the first paragraph.  Refer to [http://www.w3schools.com/tags/tag_b.asp](http://www.w3schools.com/tags/tag_b.asp).
 
 Adding Some Style
 -----------------
-TODO
+Just like styles in MS Word, CSS, Cascading Style Sheets, is used to separate document structure from style.  A well-planned CSS file can be re-used across any number of pages in a site or across many web sites on different servers.  You can establish your company's entire brand in a single file (or use several files for maintainability and then join them for the final product). 
+
+###Scenario
+Effective immediately, all Friender pages must meet the following specifications:
+
+- All text will be displayed in the font *Arial*.
+- All text is displayed with a yellow on dark blue background.
+- All header tags are centered on the page.
+
+###Implementation
+1. Go to [http://jsbin.com/zavut/2/edit](http://jsbin.com/zavut/2/edit)
+2. Ensure the CSS tab is open.
+3. Add this text:
+```
+body{
+  color:yellow;
+  background-color: darkblue;
+  font-family: Arial;
+}
+```
+4. Notice that all nodes in the Output have inherited the style applied to *body*. There is an exception, however.  The links are not yellow.  This is because each web browser has its own default styles which are overriding your specified style.  Below the body style, add this style:
+```
+a{
+ color:yellow;
+}
+```  
+5. Finally, add this style below the anchor style.
+```
+h1,h2,h3,h4,h5,h6{
+ text-align:center;
+}
+```
+
+In the code above, we created some basic CSS using this syntax:
+```
+selector { attribute1 : value1; }
+```
+A selector identifies which nodes to apply a style to, and there are many ways to select document nodes.
+
+Try adding these styles:
+```
+/* make all delete links look like they're not allowed */
+a.action-delete{ 
+  cursor:not-allowed;  
+}
+/* change the style for delete links when the mouse is overhead */
+a.action-delete:hover{
+  color:red;
+  font-weight:bold;
+}
+```
+The first style selects all links with a class of *action-delete* and applies a cursor style.  And the next style targets the same links but only when the mouse is placed over them.  Also notice that `/* stuff goes here */` can be used to place comments in style sheets.
+
+There is much more to CSS. And, as a word of caution, some styles are not implemented consistently across different web browsers and version of web browsers.  Depending on your audience, you may need to test across many web browsers.
+
+### Further Learning
+[http://www.w3schools.com/css/](http://www.w3schools.com/css/)
+
+### Exercises
+1. Add a style to bold all links.
+2. Add a 3 pixel dashed border to the body. Refer to [http://www.w3schools.com/cssref/pr_border.asp](CSS Border Property)
+
 
 Making it Interactive
 ---------------------
