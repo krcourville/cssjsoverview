@@ -138,7 +138,7 @@ There is much more to CSS. And, as a word of caution, some styles are not implem
 1. Add a style that makes all links bold.
 2. Add a 3 pixel dashed border to the body. Refer to [http://www.w3schools.com/cssref/pr_border.asp](CSS Border Property)
 
-##Making it Interactive
+##Improving the User Experience with JavaScript
 Now comes the time to make Friender do something with those *unfriend* links.  You know, because, two friends are getting hard to maintain. First, let's look at how this would be accomplished via normal static HTML pages.
 
 ###Unfriending without JavaScript
@@ -147,21 +147,51 @@ Now comes the time to make Friender do something with those *unfriend* links.  Y
 3. Finally, we offer a confirmation to indicate the action was successful. [http://jsbin.com/fazen/1](http://jsbin.com/fazen/1).  In a purely static HTML world, we would need to offer a *failed* page as well.  Can we improve on the work flow for this simple task?
 
 ###Unfriending with JavaScript
-In the following steps, we'll use JavaScript to make Unfriending occur within a single HTML page.
+In the following steps, we'll use JavaScript and attempt to improve user experience when unfriending.  Add in the following code block sequentially to create javascript for handling unfriendly without visible full page postbacks.
 
 1. Here's your starting point: [http://jsbin.com/puruf/1/edit](http://jsbin.com/puruf/1/edit)
 2. We need to reference all links classified as *action-unfriend*.  Add this line into the JavasScript tab.
-			```
-			var unfriendlinks = document.getElementsByClassName('action-unfriend');
-			```
+
+		var unfriendlinks = document.getElementsByClassName('action-unfriend');
+
 3. Now that we have the links, loop through them all and bind a function to handle clicks.
 
-			```
-			for( var i = 0; i < unfriendlinks.length; i++){
-			  var unfriendlink = unfriendlinks[i];  
-			  unfriendlink.addEventListener('click', onUnfriendClick);
-			}
-			```
+		for( var i = 0; i < unfriendlinks.length; i++){
+			var unfriendlink = unfriendlinks[i];  
+			unfriendlink.addEventListener('click', onUnfriendClick);
+		}
+
+4. And here's the code to actually remove the your friend from the list.  This code is somewhat complex for a JavaScript newcomer.  As a result, it is heavily commented.  JavaScript comments start with two backslashes.  You can also use `/* type comments here */` for multi-line commenting.
+
+		function onUnfriendClick(e){
+		  e.preventDefault();    
+		  // NOTES: 
+		  // 'this' refers to the clicked element
+		  // the anchor tag in this case.  
+		  // Siblings are nodes on the same level
+		  // with the same parent in the DOM.. very 
+		  // similiar to most modern families  
+		  var isSure = confirm(
+		    'Unfriending' + 
+		    this.nextSibling.textContent + 
+		    '. Click OK to continue.'
+		  );
+		  if( isSure ){
+		    // Normally, here you would interact with 
+		    // a service to perform the unfriend
+		    // against a datastore.
+		    // For now,  we'll just remove the containing
+		    // li element
+		    //
+		    // memory leaks may occurr if you don't
+		    // remove event bindings
+		    this.removeEventListener('click', onUnfriendClick);
+		    //
+		    // access the parent list and remove the list item
+		    this.parentNode.parentNode.removeChild(
+		      this.parentNode  
+		    );
+		  }
 
 
 ##Conclusion
