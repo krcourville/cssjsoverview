@@ -11,7 +11,7 @@ All source code demonstrated here can be created and be viewed with any text edi
 ## Styling in MS Word
 To help illustrate the usefulness of styles and document structure, let's try a simple example with a MS Word document.  Follow these steps to examine how styles work in a Word document (Note: These steps were tested against Word 2010):
 
-1. Open [CheckOutMyStyle.docx](CheckOutMyStyle.docx)
+1. Open [CheckOutMyStyle.docx](/blob/master/CheckOutMyStyle.docx?raw=true)
 2. This document uses 4 styles. See if you can identify them:
 	- Normal
 	- Title
