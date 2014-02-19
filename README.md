@@ -37,7 +37,7 @@ HTML
 ----
 Discussing CSS and JavaScript without a minimal understanding of HTML is near impossible.  HTML, Hyper Text Markup Language, is used in practically every web page you visit.  No matter what web server (Apache, IIS, Tomcat) or technology (ASP.NET, Ruby on Rails, JSP) you use, the final output to your web browser will generally be HTML.
 
-To see HTML in action, open the Friender Base page here: [http://jsbin.com/zavut/1/edit](http://jsbin.com/zavut/1/edit).  You should see the HTML on left and resulting page on the right.
+To see HTML in action, open the Friender Base page here: [http://jsbin.com/zavut/](http://jsbin.com/zavut/).  You should see the HTML on left and resulting page on the right.
 
 HTML documents are composed of a tree containing various *nodes*.  This tree of nodes forms a DOM (Document Object Model) that can be references by CSS and JavaScript.  Tags, Attributes, and Text are the most common nodes. Here's some examples:
 
@@ -45,7 +45,7 @@ HTML documents are composed of a tree containing various *nodes*.  This tree of 
  * Attributes are surrounded with matching single or double quotes within the opening tag like this: `<p class="this_is_an_attribute">`.
  * Text nodes can be found between the opening and closing tags like so:  `<p>This is a text node within a p tags!</p>`
 
-Similar to Word, HTML allows you to classify components of your document.  You can use `<h1> <h2> ...` for different header levels, `<p>` for paragraphs, `<ol>` for an ordered list, and `<li>` for list items.  The *class* attribute is a special attribute used to further classify elements.  In the [http://jsbin.com/zavut/1/edit](Friender) page, notice how class is used to identify links that will delete something.
+Similar to Word, HTML allows you to classify components of your document.  You can use `<h1> <h2> ...` for different header levels, `<p>` for paragraphs, `<ol>` for an ordered list, and `<li>` for list items.  The *class* attribute is a special attribute used to further classify elements.  In the [http://jsbin.com/zavut/](Friender) page, notice how class is used to identify links that will delete something.
 
 Another important tag is `<a>`, which creates links on web pages to other web pages and resources.  The *a* stands for *anchor*.  Consider this link: `<a href="http://www.google.com">Google It!</a>`.  The *href* attribute specifies the web address of the link, and the text between the open and close tag form what is the displayed in a web browser.
 
@@ -80,33 +80,39 @@ Effective immediately, all Friender pages must meet the following specifications
 - All header tags are centered on the page.
 
 ###Implementation
-1. Go to [http://jsbin.com/zavut/2/edit](http://jsbin.com/zavut/2/edit)
+1. Go to [http://jsbin.com/zavut/](http://jsbin.com/zavut/)
 2. Ensure the CSS tab is open.
 3. Add this text:
-```
-body{
-  color:yellow;
-  background-color: darkblue;
-  font-family: Arial;
-}
-```
+
+		```
+		body{
+		  color:yellow;
+		  background-color: darkblue;
+		  font-family: Arial;
+		}
+		```
+
 4. Notice that all nodes in the Output have inherited the style applied to *body*. There is an exception, however.  The links are not yellow.  This is because each web browser has its own default styles which are overriding your specified style.  Below the body style, add this style:
-```
-a{
- color:yellow;
-}
-```  
+
+		```
+		a{
+		 color:yellow;
+		}
+		```  
+
 5. Finally, add this style below the anchor style.
-```
-h1,h2,h3,h4,h5,h6{
- text-align:center;
-}
-```
+
+		```
+		h1,h2,h3,h4,h5,h6{
+		 text-align:center;
+		}
+		```
 
 In the code above, we created some basic CSS using this syntax:
-```
-selector { attribute1 : value1; }
-```
+
+		```
+		selector { attribute1 : value1; }
+		```
 A selector identifies which nodes to apply a style to, and there are many ways to select document nodes.
 
 Try adding these styles:
@@ -132,9 +138,31 @@ There is much more to CSS. And, as a word of caution, some styles are not implem
 1. Add a style that makes all links bold.
 2. Add a 3 pixel dashed border to the body. Refer to [http://www.w3schools.com/cssref/pr_border.asp](CSS Border Property)
 
-
 ##Making it Interactive
-TODO
+Now comes the time to make Friender do something with those *unfriend* links.  You know, because, two friends are getting hard to maintain. First, let's look at how this would be accomplished via normal static HTML pages.
+
+###Unfriending without JavaScript
+1. From the base application page, click *Unfriend* -> [http://jsbin.com/runoj/2](http://jsbin.com/runoj/2)
+2. It's possible to accidentally unfriend somone or click on the wrong unfriend link.As a result, let's offer a confirmation before performing the delete -> [http://jsbin.com/boliwe/2](http://jsbin.com/boliwe/2). Also notice this page uses a form tag with a *DELETE* method attribute.  Any data modification should **never** occur through a simple link or default web *GET* method attribute.  This is particularly important on public web sites where crawlers like Google follow all links, and, as a result, would removed all of your friends.
+3. Finally, we offer a confirmation to indicate the action was successful. [http://jsbin.com/fazen/1](http://jsbin.com/fazen/1).  In a purely static HTML world, we would need to offer a *failed* page as well.  Can we improve on the work flow for this simple task?
+
+###Unfriending with JavaScript
+In the following steps, we'll use JavaScript to make Unfriending occur within a single HTML page.
+
+1. Here's your starting point: [http://jsbin.com/puruf/1/edit](http://jsbin.com/puruf/1/edit)
+2. We need to reference all links classified as *action-unfriend*.  Add this line into the JavasScript tab.
+			```
+			var unfriendlinks = document.getElementsByClassName('action-unfriend');
+			```
+3. Now that we have the links, loop through them all and bind a function to handle clicks.
+
+			```
+			for( var i = 0; i < unfriendlinks.length; i++){
+			  var unfriendlink = unfriendlinks[i];  
+			  unfriendlink.addEventListener('click', onUnfriendClick);
+			}
+			```
+
 
 ##Conclusion
 TODO
