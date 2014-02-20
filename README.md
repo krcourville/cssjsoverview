@@ -81,7 +81,7 @@ Effective immediately, all Friender pages must meet the following specifications
 - All header tags are centered on the page.
 
 ###Implementation
-1. Go to [http://jsbin.com/zavut/](http://jsbin.com/zavut/)
+1. Go to [http://jsbin.com/zavut/1/edit](http://jsbin.com/zavut/1/edit)
 2. Ensure the CSS tab is open.
 3. Add this text:
 
@@ -146,7 +146,7 @@ Here is how the work flow would work without JavaScript.  All links in the jsbin
 ###Unfriending **with** JavaScript
 Now, let's use JavaScript and attempt to improve the unfriending experience.  
 
-Here's your starting point: [http://jsbin.com/puruf/1/edit](http://jsbin.com/puruf/1/edit).  Add in the following code blocks sequentially to the jsbin JavaScript tab to handle unfriending without full page postbacks.  Since JavaScript is a complex, general purpose programming language, much of this code may be confusing.  For the moment, try to relate what is happing on the screen with the code provided.  Commenting is provide to help with this association.  JavaScript comments can start with two backslashes `// my comment`, or you can use `/* type comments here */` for multi-line commenting just like CSS.
+Here's your starting point: [http://jsbin.com/puruf/7/edit](http://jsbin.com/puruf/7/edit).  Add in the following code blocks sequentially to the jsbin JavaScript tab to handle unfriending without full page postbacks.  Since JavaScript is a complex, general purpose programming language, much of this code may be confusing.  For the moment, try to relate what is happing on the screen with the code provided.  Commenting is provide to help with this association.  JavaScript comments can start with two backslashes `// my comment`, or you can use `/* type comments here */` for multi-line commenting just like CSS.
 
 1. First, we need to reference all links classified as *action-unfriend*.
 
